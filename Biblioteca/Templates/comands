@@ -1,0 +1,46 @@
+// Crear una app
+python ./manage.py startapp {[app]}
+
+en el modulo JALQ_CONTACTFORM >> settings.py
+>installed_app=[
+    ''
+    ''
+    ''
+    '{[NameApp]}'
+    ]
+
+# Create your views in FormContApp.
+## Create your models in FormContApp.
+##Configurar en admin en FormContactApp
+    -importar models en admin
+    -# Register your models in admin.
+
+
+bd: db.sqlite3
+usuario: vlaslov
+contraseña: khipu2023
+
+// Revisar las APPs
+python ./manage.py check {[app]}
+    si esta correcto debe aparecer>> System check identified no issues (0 silenced).
+
+// Ejecutar la migracion inicial
+python ./manage.py makemigrations
+
+// Ejecutar la migracion SQL
+python ./manage.py sqlmigrate {[app]} {[NroMigracion]sin nombre.py}
+
+// Generar la BD
+python ./manage.py migrate
+
+//create SuperUser in Comand
+python manage.py createsuperuser
+    user:
+    email/:
+    pssw:
+    - delete superusuario
+        >python manage.py shell
+        >python manage.py shell_plus
+        >User.objects.get(username="NAME_USER", is_superuser=True).delete()
+    - cHANGE SUPERUSUARIO PSW
+        >python manage.py changepassword user_name -> Cambio de contraseña para el usuario ‘user_name’
